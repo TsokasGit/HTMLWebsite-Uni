@@ -1,0 +1,151 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>MobiCreate</title>
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="shortcut icon" type="image/jpg" href="Resources/favicon.png" />
+
+    <style>
+        h2 {
+            font-size: 50px;
+            text-align: center;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    <section>
+    </section>
+
+    <div class="popup" id="popup-1">
+        <div class="overlay"></div>
+        <div class="content">
+            <div class="close-btn" onclick="fn1()">×</div>
+            <h1>Your total cost</h1>
+            <p>Your total cost is <span id="totalCost"></span> US dollars.</p>
+            Thank you for choosing MobiCreate! 📱❤️
+        </div>
+    </div>
+
+    <form class="CPU" action="MobiCreate.html" method="post">
+        <h1>CPU</h1>
+        <br />Snapdragon 630 <input type="radio" name="CPU" id="cpu1" /> ~100$ <br />
+        <br />Snapdragon 770 <input type="radio" name="CPU" id="cpu2" /> ~150$<br />
+        <br />Snapdragon 888 <input type="radio" name="CPU" id="cpu3" /> ~250$<br />
+    </form>
+
+
+    <form class="RAM" action="MobiCreate.html" method="post">
+        <h1>RAM</h1>
+        <br />4 GB <input type="radio" name="RAM" id="ram1" /> ~20$<br />
+        <br />6 GB <input type="radio" name="RAM" id="ram2" /> ~40$<br />
+        <br />8 GB <input type="radio" name="RAM" id="ram3" /> ~50$<br />
+    </form>
+
+    <form class="HARDDISK" action="MobiCreate.html" method="post">
+        <h1>SPACE</h1>
+        <br />64 GB <input type="radio" name="SPACE" id="space1" /> ~30$<br />
+        <br />128 GB <input type="radio" name="SPACE" id="space2" /> ~50%<br />
+        <br />256 GB <input type="radio" name="SPACE" id="space3" /> ~60$<br />
+    </form>
+
+    <form class="EXTRAS" action="MobiCreate.html" method="post">
+        <h1>EXTRAS</h1>
+        <br />5G <input type="checkbox" name="extra" id="extra1" />              ~30$ <br />
+        <br />64 MP AI Camera <input type="checkbox" name="extra" id="extra2" /> ~80$<br />
+        <br />5000 MAH Battery <input type="checkbox" name="extra" id="extra3" />~100$<br />
+        <br />144 Hz Screen <input type="checkbox" name="extra" id="extra4" />   ~130$<br />
+        <br />Gold Plating <input type="checkbox" name="extra" id="extra5" />    ~750$<br />
+    </form>
+
+    <form class="Color" action="MobiCreate.html" method="post">
+        <h1>Color</h1>
+        <select id="Color">
+            <option value="WarmSilver" id="color1">Warm Silver</option>
+            <option value="AuroraBlack" id="color2">Aurora Black</option>
+            <option value="BreathingCrystal" id="color3">Breathing Crystal</option>
+            <option value="RadiantMist" id="color4" selected>Radiant Mist</option>
+        </select>
+
+    </form>
+
+    <div class="container">
+        <button class="btn" onclick="fn1()" name="btn" id="btn1">Calculate Total Cost </button>
+    </div>
+
+    <script type="text/javascript">
+        function fn1() {
+            var cpu1 = document.getElementById("cpu1");
+            var cpu2 = document.getElementById("cpu2");
+            var cpu3 = document.getElementById("cpu3");
+
+            var ram1 = document.getElementById("ram1");
+            var ram2 = document.getElementById("ram2");
+            var ram3 = document.getElementById("ram3");
+
+            var space1 = document.getElementById("space1");
+            var space2 = document.getElementById("space2");
+            var space3 = document.getElementById("space3");
+
+            var extra1 = document.getElementById("extra1");
+            var extra2 = document.getElementById("extra2");
+            var extra3 = document.getElementById("extra3");
+            var extra4 = document.getElementById("extra4");
+            var extra5 = document.getElementById("extra5");
+
+            if (cpu1.checked == true) {
+                cpuCost = 100;
+            } else if (cpu2.checked == true) {
+                cpuCost = 150;
+            } else if (cpu3.checked == true) {
+                cpuCost = 250;
+            }
+
+            if (ram1.checked == true) {
+                ramCost = 20;
+            } else if (ram2.checked == true) {
+                ramCost = 40;
+            } else if (ram3.checked == true) {
+                ramCost = 50;
+            }
+
+            if (space1.checked == true) {
+                spaceCost = 30;
+            } else if (space2.checked == true) {
+                spaceCost = 50;
+            } else if (space3.checked == true) {
+                spaceCost = 60;
+            }
+
+            totalCost = cpuCost + ramCost + spaceCost;
+
+            if (extra1.checked == true) {
+                totalCost = totalCost + 30;
+            }
+
+            if (extra2.checked == true) {
+                totalCost = totalCost + 80;
+            }
+
+            if (extra3.checked == true) {
+                totalCost = totalCost + 100;
+            }
+
+            if (extra4.checked == true) {
+                totalCost = totalCost + 130;
+            }
+
+            if (extra5.checked == true) {
+                totalCost = totalCost + 750;
+            }
+
+
+            document.getElementById('totalCost').innerHTML = totalCost;
+            document.getElementById("popup-1").classList.toggle("active");
+        }
+
+    </script>
+
+</body>
+</html>
